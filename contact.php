@@ -1,3 +1,73 @@
+<?php 
+session_start();
+
+if(!isset($_SESSION['id'])){
+
+  header('location:login.php');
+
+}
+
+?>
+<?php
+
+if (isset($_POST['submit'])) {
+
+  //  email on which you would like to recevied mail
+  $email_to = "abc@gmail.com";
+
+  //  webmail on which you upload info@domainname.com
+  $sender = "abc@gmail.com";
+
+
+  $name = $_POST['name']; // required
+  $lname = $_POST['lname']; // required
+  $subject = $_POST['subject']; // required
+  $message = $_POST['message']; // required
+  $email = $_POST['email']; // required
+
+
+
+  $email_message = "Below are the details of the contact form that was submitted
+from www.focus4floors.nl:\n\n";
+  $email_subject = "Contact Form - $subject";
+
+
+  function clean_string($string)
+  {
+    $bad = array("content-type", "bcc:", "to:", "cc:", "href");
+    return str_replace($bad, "", $string);
+  }
+
+  $email_message .= "Name: " . clean_string($name) . "\n";
+  $email_message .= "Last Name: " . clean_string($lname) . "\n";
+  $email_message .= "Telephone: " . clean_string($telephone) . "\n";
+  $email_message .= "Email: " . clean_string($email) . "\n";
+  $email_message .= "Product: " . clean_string($product) . "\n";
+  $email_message .= "Sort: " . clean_string($sort) . "\n";
+  $email_message .= "Message: " . clean_string($message) . "\n";
+
+
+  // create email headers
+
+  $headers = 'From:' . $sender . "\r\n" .
+    'Reply-To: ' . $email . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+  $sent = mail($email_to, $email_subject, $email_message, $headers);
+
+
+  if ($sent) {
+    echo "<script> alert('Thank you very much we will soon get back to you')
+  location.replace('contact/')
+  </script>";
+  } else {
+    echo "<script> alert('Something was wrong please try again')
+  location.replace('contact/')
+  </script>";
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +138,7 @@
 
         <div class="col-xl-6">
           <div class="card p-4">
-            <form action="forms/contact.php" method="post" class="php-email-form">
+            <form action="" method="post" class="php-email-form">
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -107,32 +177,8 @@
 
   </main><!-- End #main -->
 
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>Easy Invest</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-     Designed by <a href="#">Easy Invest</a>
-    </div>
-  </footer><!-- End Footer -->
+  <!-- ======= Footer ======= -->
+  <?php require_once('page/footer.php'); ?>
+  <!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.min.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script src="inc/main.js"></script>
-
-</body>
-
-</html>
+  <?php require_once('page/script.php'); ?>
