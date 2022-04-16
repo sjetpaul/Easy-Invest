@@ -6,7 +6,11 @@ if(!isset($_SESSION['id'])){
   header('location:login.php');
 
 }
+// User Risk Data will fetched from Database
 
+
+//convert riskProfileStr String into array
+$riskSummary = explode('`',$riskProfileStr) ;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,46 +50,54 @@ if(!isset($_SESSION['id'])){
                 <!-- Risk Summary -->
                 <div class="risk-summary">
                     <div class="row">
-                        <div class="col-lg-9 col-md-8 label">What is your current age?</div>
-                        <div class="col-lg-3 col-md-4">age1</div>
+                        <div class="col-lg-9 col-md-8 label">1. What is your current age?</div>
+                        <div class="col-lg-3 col-md-4"><?php echo $riskSummary[0]; ?></div>
                       </div>
                       <div class="row">
-                        <div class="col-lg-9 col-md-8 label">How many months of expenses can your emergency funds
+                        <div class="col-lg-9 col-md-8 label">2. How many months of expenses can your emergency funds
                           cover?</div>
-                        <div class="col-lg-3 col-md-4">emergency_fund1</div>
+                        <div class="col-lg-3 col-md-4"><?php echo $riskSummary[1]; ?></div>
                       </div>
       
                       <div class="row">
-                        <div class="col-lg-9 col-md-8 label">What percentage of monthly income can be invested?</div>
-                        <div class="col-lg-3 col-md-4">income1</div>
+                        <div class="col-lg-9 col-md-8 label">3. What percentage of monthly income can be invested?</div>
+                        <div class="col-lg-3 col-md-4"><?php echo $riskSummary[2]; ?></div>
                       </div>
       
                       <div class="row">
-                          <div class="col-lg-9 col-md-8 label">How many people depend on you financially?</div>
-                          <div class="col-lg-3 col-md-4">depend1</div>
+                          <div class="col-lg-9 col-md-8 label">4. How many people depend on you financially?</div>
+                          <div class="col-lg-3 col-md-4"><?php echo $riskSummary[3]; ?></div>
                         </div>
       
                         <div class="row">
-                          <div class="col-lg-9 col-md-8 label">I prefer to keep capital safe rather than have high
+                          <div class="col-lg-9 col-md-8 label">5. I prefer to keep capital safe rather than have high
                               returns</div>
-                          <div class="col-lg-3 col-md-4">capital_safe1</div>
+                          <div class="col-lg-3 col-md-4"><?php echo $riskSummary[4]; ?></div>
                         </div>
       
                         <div class="row">
-                          <div class="col-lg-9 col-md-8 label">What is your primary investment objective?</div>
-                          <div class="col-lg-3 col-md-4">objective1</div>
+                          <div class="col-lg-9 col-md-8 label">6. What is your primary investment objective?</div>
+                          <div class="col-lg-3 col-md-4"><?php echo $riskSummary[5]; ?></div>
                         </div>
       
                         <div class="row">
-                          <div class="col-lg-9 col-md-8 label">I would start to worry about my investments if my portfolio
+                          <div class="col-lg-9 col-md-8 label">7. I would start to worry about my investments if my portfolio
                               value falls</div>
-                          <div class="col-lg-3 col-md-4">portfolio_falls1</div>
+                          <div class="col-lg-3 col-md-4"><?php echo $riskSummary[6]; ?></div>
                         </div>
-      
-                        <!-- <div class="row">
-                          <div class="col-lg-3 col-md-4 label">Email</div>
-                          <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
-                        </div> -->
+                        <div class="row">
+                          <div class="col-lg-9 col-md-8 label">8. In order to achieve high returns I am willing to choose high risk investments.</div>
+                          <div class="col-lg-3 col-md-4"><?php echo $riskSummary[7]; ?></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-9 col-md-8 label">9. What is your expected rate of return from your investments?</div>
+                          <div class="col-lg-3 col-md-4"><?php echo $riskSummary[8]; ?></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-9 col-md-8 label">10. You have Rs.10 lakh to invest at the start of the year. Below are the three hypothetical investment portfolio returns scenarios with likely best and worst-case annual returns. Which scenario would you prefer?</div>
+                          <div class="col-lg-3 col-md-4"><?php echo $riskSummary[9]; ?></div>
+                        </div>
+                        <a href="/risk-analyze.php">update Risk Profile</a>
                 </div>
               </div>
             </div>
