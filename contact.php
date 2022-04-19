@@ -53,7 +53,7 @@ from www.focus4floors.nl:\n\n";
   if ($sent) {
     echo "<script> alert('Thank you very much we will soon get back to you')
   </script>";
-  
+
   } else {
     echo "<script> alert('Something was wrong please try again')
   </script>";
