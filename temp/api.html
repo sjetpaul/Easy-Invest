@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function objectToArray(json) {
+        var arr=[];
+        for(var i in json){
+          var obj=json[i];
+          var key=null;
+          while(typeof obj == "object"){
+            for(ind in obj){
+              if(key == null) key=ind;
+              obj=obj[ind];
+            }
+          }
+          arr.push({'key':key, 'val':obj});
+        }
+        console.log(typeof arr);
+        return arr;
+      }
+      var json;
+      var rawData = [];
+      const url = "../jsondata.php";
+
+      json = fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          return data;
+        });
+        // for(var i in dataSet){
+        //   rawData.push([i, dataSet[i]]);
+        // }
+         rawData = objectToArray(json);
+          console.log(typeof rawData);
+      // array.forEach(element => {
+
+      // });
+    </script>
+  </body>
+</html>

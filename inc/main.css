@@ -1,0 +1,6 @@
+.dashboard .activity .activity-item .activite-label::before{
+    background-color: #fff;
+}
+.dashboard .activity .activity-item .activite-label{
+    max-width:60%;
+}

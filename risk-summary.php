@@ -1,16 +1,5 @@
 <?php 
-session_start();
 
-if(!isset($_SESSION['id'])){
-
-  header('location:login.php');
-
-}
-// User Risk Data will fetched from Database
-
-
-//convert riskProfileStr String into array
-$riskSummary = explode('`',$riskProfileStr) ;
 ?>
 <!DOCTYPE html>
 <html lang="en">
