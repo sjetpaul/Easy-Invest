@@ -41,10 +41,10 @@ if (isset($_POST['risk_analyze_submit'])) {
                 VALUES ('$new_id', '$data', 'other', '4','into','me')";
        $result = mysqli_query($con,$sql2);         
     }else{
-     echo "<script> alert('Opps Something Went wrong in IF 1'); </script>";
+     echo "<script> alert('Opps Something Went wrong When Insert Data into the new risk database'); </script>";
     }
   }else{
-      echo "<script> alert('wrong database in option IF 1'); </script>";  
+      echo "<script> alert('We can't get the main data from your database. Please check the Connection!!! '); </script>";  
   }
 
  
