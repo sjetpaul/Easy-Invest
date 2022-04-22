@@ -1,79 +1,59 @@
+<?php include('page/session.php'); ?>
 <?php
-session_start();
 require_once('inc/config.php');
-if(!isset($_SESSION['user_id'])){
-
-  header('location:login.php');
-
-}
-
-?>
-
-<?php
 if (isset($_POST['risk_analyze_submit'])) {
- // $username =  $_POST['username']; 
+  $username =  $_POST['username'];
   $totalScore = $_POST['totalScore'];
   $riskProfileStr = $_POST['riskProfileStr'];
 
-  $risk_status = "";
-  $risk_value = 0;
+  $risk_str = "";
+  $risk_status = 0;
 
-  //For Getting data from who login this page and submit
-  
-  $sql = "SELECT * FROM $tb_login";
-  $res = mysqli_query($con,$sql);
-  $num = mysqli_num_rows($res);
-  if($num>0){
-    $row = mysqli_fetch_assoc($res);
-    //Get id from old database and Change it to a new id by adding $add_id = 123 
-    $id = $_SESSION['user_id'];
-    $add_id = 123;
-    $new_id= $id . $add_id;
-    //get myusername from old database 
-   // $_SESSION['myusername'] = $row['myusername'];
-    $data = $_SESSION['myusername'];
+  switch ($totalScore) {
+    case ($totalScore != 0 && $totalScore >= 10 && $totalScore <= 18):
+      $risk_str = "Conservative";
+      $risk_status = 1;
+      break;
+    case ($totalScore != 0 && $totalScore >= 19 && $totalScore <= 26):
+      $risk_str = "Moderately Conservative";
+      $risk_status = 2;
+      break;
+    case ($totalScore != 0 && $totalScore >= 27 && $totalScore <= 34):
+      $risk_str = "Moderate";
+      $risk_status = 3;
+      break;
+    case ($totalScore != 0 && $totalScore >= 35 && $totalScore <= 42):
+      $risk_str = "Moderately Aggressive";
+      $risk_status = 4;
+      break;
+    case ($totalScore != 0 && $totalScore >= 43 && $totalScore <= 50):
+      $risk_str = "Aggressive";
+      $risk_status = 5;
+      break;
+  }
 
-    //$sql2 is the same database 
-    $sql2 = "SELECT * FROM $tb_login2 WHERE username = '$data' AND risk_id = '$id'";
+  $sql = "SELECT * FROM $tb_risk WHERE myusername = '$username'";
+  $res = mysqli_query($con, $sql);
+  if (mysqli_num_rows($res) == 0) {
+    // Insert New Risk Profile
+    $risk_id = $username . rand(100, 999);
+    $sql2 = "INSERT INTO $tb_risk (risk_id, myusername,risk_str,risk_status,risk_profile) VALUES ('$risk_id','$username','$risk_str','$risk_status','$riskProfileStr')";
     $result = mysqli_query($con, $sql2);
-    if(!$result -> num_rows > 0) {
-      $sql2 = "INSERT INTO $tb_login2 (risk_id, username, risk_status,risk_value,risk_profile,risk_other)
-                VALUES ('$new_id', '$data', 'other', '4','into','me')";
-       $result = mysqli_query($con,$sql2);         
+    if($result){
+      echo "<script> alert('Your Risk Profile Successfully Saved'); </script>";
     }else{
-     echo "<script> alert('Opps Something Went wrong When Insert Data into the new risk database'); </script>";
+      echo "<script> alert('Server Error!!!'); </script>";
     }
-  }else{
-      echo "<script> alert('We can't get the main data from your database. Please check the Connection!!! '); </script>";  
+  } else {
+    // Update Existing Risk Profile
+    $sql2 = "UPDATE $tb_risk SET `risk_str` = '$risk_str', `risk_status` = '$risk_status', `risk_profile` = '$riskProfileStr' WHERE $tb_risk.`myusername` = '$username'";
+    $result = mysqli_query($con, $sql2);
+    if($result){
+      echo "<script> alert('Your Risk Profile Successfully Saved'); </script>";
+    }else{
+      echo "<script> alert('Server Error!!!'); </script>";
+    }
   }
-
- 
-  switch ($totalScore){
-    case ($totalScore!=0 && $totalScore >= 10 && $totalScore <= 18):
-      $risk_status = "Conservative";
-      $risk_value = 1;
-      break;
-    case ($totalScore!=0 && $totalScore >= 19 && $totalScore <= 26):
-      $risk_status = "Moderately Conservative";
-      $risk_value = 2;
-      break;
-    case ($totalScore!=0 && $totalScore >= 27 && $totalScore <= 34):
-      $risk_status = "Moderate";
-      $risk_value = 3;
-      break;
-    case ($totalScore!=0 && $totalScore >= 35 && $totalScore <= 42):
-      $risk_status = "Moderately Aggressive";
-      $risk_value = 4;
-      break;
-    case ($totalScore!=0 && $totalScore >= 43 && $totalScore <= 50):
-      $risk_status = "Aggressive";
-      $risk_value = 5;
-      break;
-
-  }
-  // Risk Profile Data Stored in Database
-  // risk_status, risk_value and riskProfileStr will be stored in data base
-
 }
 ?>
 <!DOCTYPE html>
@@ -514,11 +494,11 @@ if (isset($_POST['risk_analyze_submit'])) {
                     </div>
                   </div>
                 </fieldset>
-                
-                <input type="hidden" name="username" valu="" id="username" >
-                <input type="hidden" name="totalScore" value="" id="totalScore" >
-                <input type="hidden" name="riskProfileStr" value="" id="riskProfileStr" >
-                
+
+                <input type="hidden" name="username" value="<?php echo $_SESSION['username']; ?>" id="username">
+                <input type="hidden" name="totalScore" value="" id="totalScore">
+                <input type="hidden" name="riskProfileStr" value="" id="riskProfileStr">
+
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" name="risk_analyze_submit" onclick="checkform()">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>

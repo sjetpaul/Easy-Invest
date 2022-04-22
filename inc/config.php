@@ -10,5 +10,5 @@
 		$tb_login = "register_user1";
 
 	// Table Name for risk_analyze
-		$tb_login2 = "risk_data";
+		$tb_risk = "risk_data";
 ?>

@@ -1,31 +1,33 @@
-<?php 
+<?php
 session_start();
-  require_once('inc/config.php');
-  $msg='';
-  if(isset($_POST['login'])){
-  
-    $myusername = stripslashes($_POST['username']);
-    $mypassword = stripslashes($_POST['password']);
-    
-    $myusername = mysqli_real_escape_string($con,$myusername);
-    $mypassword = mysqli_real_escape_string($con,$mypassword);
-    $mypassword = md5($mypassword);
+require_once('inc/config.php');
+$msg = '';
+if (isset($_POST['login'])) {
 
-    $sql = "SELECT * FROM $tb_login WHERE myusername = '$myusername'";
-    $res = mysqli_query($con,$sql);
-    if(mysqli_num_rows($res) == 1){
-      $val = mysqli_fetch_assoc($res);
-      if( $val['myusername']==$myusername &&  $val['mypassword']== $mypassword ){
-        session_start();
-        $_SESSION['myusername'] = $val['myusername'];
-        header('location : index.php');
-          }else{ 
-            echo $msg='<code><p>Wrong Username or Password! Try Again </p></code>'; 
-          }
-        }else{
-           echo $msg='<code><p>Problem in Fetching Details From Database</p></code>'; 
-          }
+  $myusername = stripslashes($_POST['username']);
+  $mypassword = stripslashes($_POST['password']);
+
+  $myusername = mysqli_real_escape_string($con, $myusername);
+  $mypassword = mysqli_real_escape_string($con, $mypassword);
+
+  $mypassword = hash('sha256', $mypassword);
+
+  $sql = "SELECT * FROM $tb_login WHERE myusername = '$myusername'";
+  $res = mysqli_query($con, $sql);
+  if (mysqli_num_rows($res) == 1) {
+    $val = mysqli_fetch_assoc($res);
+    if ($myusername == $val['myusername'] && $mypassword == $val['mypassword']) {
+      session_start();
+      $_SESSION['user_id']=$val['user_id'];
+      $_SESSION['username']=$val['myusername'];
+      header('location:index.php');
+    } else {
+      echo $msg = '<code><p>Wrong Username or Password! Try Again </p></code>';
+    }
+  } else {
+    echo $msg = '<code><p>Problem in Fetching Details From Database</p></code>';
   }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,9 +62,13 @@ session_start();
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form action="login.php" class="row g-3 needs-validation"  method="POST" novalidate>
+                  <form action="" class="row g-3 needs-validation" method="POST" novalidate>
                     <div class="col-12">
-                    <div style:<?php if(empty($msg)){echo "display:block";}else{ echo "display:hidden"; } ?> > <?php echo $msg; ?> </div>
+                      <div style:<?php if (empty($msg)) {
+                                    echo "display:block";
+                                  } else {
+                                    echo "display:hidden";
+                                  } ?>> <?php echo $msg; ?> </div>
                     </div>
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
@@ -86,7 +92,7 @@ session_start();
                       </div>
                     </div> -->
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit" name="login" >Login</button>
+                      <button class="btn btn-primary w-100" type="submit" name="login">Login</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="register.php">Create an account </a></p>
@@ -97,7 +103,7 @@ session_start();
               </div>
 
               <div class="credits">
-               Designed by <a href="#">Easy Invest</a>
+                Designed by <a href="#">Easy Invest</a>
               </div>
 
             </div>

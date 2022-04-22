@@ -39,10 +39,8 @@ function checkform(){
 		alert(msg);
 		return false;
 	}
-	alert(riskProfileStr);
+
 	document.risk_analyze.totalScore.value = totalScore;
 	document.risk_analyze.riskProfileStr.value = riskProfileStr;
-				
-	// document.questions.totalScore.value = totalScore;
 	
 }

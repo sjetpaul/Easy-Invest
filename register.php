@@ -1,70 +1,47 @@
-<?php 
+<?php
 session_start();
-  require_once('inc/config.php');
-  $msg='';
-  if(isset($_POST['register'])){
-  
-    $myname = stripslashes($_POST['name']);
-    $myemail = stripslashes($_POST['email']);
-    $myusername = stripslashes($_POST['username']);
-    $mypassword = stripslashes($_POST['password']);
-    $myconfirmpassword = stripslashes($_POST['confirmpassword']);
+require_once('inc/config.php');
+$msg = '';
+if (isset($_POST['register'])) {
 
-    $myname = mysqli_real_escape_string($con,$myname);
-    $myemail = mysqli_real_escape_string($con,$myemail);
-    $myusername = mysqli_real_escape_string($con,$myusername);
-    $mypassword = mysqli_real_escape_string($con,$mypassword);
-    $myconfirmpassword = mysqli_real_escape_string($con,$myconfirmpassword);
-    
-       /* $myname = $_POST['name'];
-        $myemail = $_POST['email'];
-        $myusername = $_POST['username'];
-        $mypassword = md5($_POST['password']);
-        $myconfirmpassword = md5($_POST['confirmpassword']); */
+  $myname = stripslashes($_POST['name']);
+  $myemail = stripslashes($_POST['email']);
+  $myusername = stripslashes($_POST['username']);
+  $mypassword = stripslashes($_POST['password']);
+  $myconfirmpassword = stripslashes($_POST['confirmpassword']);
 
-        //Checking for confirm password and sent data to database
+  $myname = mysqli_real_escape_string($con, $myname);
+  $myemail = mysqli_real_escape_string($con, $myemail);
+  $myusername = mysqli_real_escape_string($con, $myusername);
+  $mypassword = mysqli_real_escape_string($con, $mypassword);
+  $myconfirmpassword = mysqli_real_escape_string($con, $myconfirmpassword);
 
-        if($mypassword == $myconfirmpassword) {
-          $sql = "SELECT * FROM $tb_login WHERE myemail = '$myemail'";
-          $result = mysqli_query($con, $sql);
-          if(!$result -> num_rows > 0) {
-            $mypassword=md5($mypassword);
-            $sql = "INSERT INTO $tb_login (myname, myemail, myusername,mypassword) VALUES ('$myname', '$myemail', '$myusername', '$mypassword')";
-            $result = mysqli_query($con,$sql); 
-            if($result){
-              session_start();
-              $_SESSION['username'] = $myusername;
-              header('location:login.php');
-            }else{
-              echo" <script> alert('You Have an error insert value'); </script>";
-            } 
-          } else {
-             echo" <script> alert('Opps email already exists'); </script>";
-          }
-        } else {
-            echo "<script> alert('Password Not Matched'); </script>";
-        }
-      
-        // Create Unique ID
-     /***  $myid = md5($myusername);
+  $user_id = $myusername.rand(1000,9999);
 
-        $sql = "select * from $tb_login where myusername = '$myusername' "; //here username change to myusername
-        $res = mysqli_query($con,$sql);
-        //validate if username already exists
-        if(mysqli_num_rows($res) == 1){
-          $insert="insert into $tb_login value ()";
-          $res_insert = mysqli_query($con,$insert);
-          if($res_insert){
-            session_start();
-            $_SESSION['id'] = $myid;
-            $_SESSION['user'] = $myusername;
-            header('location:login.php');
+  if ($mypassword == $myconfirmpassword) {
+    $sql = "SELECT * FROM $tb_login WHERE myusername = '$myusername'";
+    $res = mysqli_query($con, $sql);
+    if (mysqli_num_rows($res) == 0) {
+      $mypassword = hash('sha256', $mypassword);
+      $sql = "INSERT INTO $tb_login (user_id, myname, myemail, myusername,mypassword) VALUES ('$user_id','$myname', '$myemail', '$myusername', '$mypassword')";
+      $result = mysqli_query($con, $sql);
+      if ($result) {
+        session_start();
+        $_SESSION['user_id']=$user_id;
+        $_SESSION['username'] = $myusername;
+        header('location:risk-analyze.php');
+      } else {
+        echo " <script> alert('You Have an error insert value'); </script>";
+      }
+    } else {
+      echo " <script> alert('Opps email already exists'); </script>";
+    }
+  } else {
+    echo "<script> alert('Password Not Matched'); </script>";
+  }
 
-          }else{ echo $msg='<code><p>Something Went Wrong</p></code>'; }
-        }else{ echo $msg='<code><p>Username Already Exists</p></code>'; } **/
+}
 
-      } 
-  
 
 
 ?>
@@ -101,7 +78,7 @@ session_start();
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form action="register.php" method="post" class="row g-3 needs-validation" novalidate>
+                  <form action="" method="post" class="row g-3 needs-validation" novalidate>
                     <div class="col-12">
                       <label for="yourName" class="form-label">Your Name</label>
                       <input type="text" name="name" class="form-control" id="yourName" required>
@@ -143,7 +120,7 @@ session_start();
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit" name="register" >Create Account</button>
+                      <button class="btn btn-primary w-100" type="submit" name="register">Create Account</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="login.php">Log in</a></p>
@@ -154,7 +131,7 @@ session_start();
               </div>
 
               <div class="credits">
-               Designed by <a href="#">Easy Invest</a>
+                Designed by <a href="#">Easy Invest</a>
               </div>
 
             </div>

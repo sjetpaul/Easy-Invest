@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2022 at 07:01 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Apr 22, 2022 at 12:03 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `register_user1` (
-  `user_id` int(10) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
   `myname` text NOT NULL,
   `myemail` varchar(30) NOT NULL,
   `myusername` varchar(20) NOT NULL,
-  `mypassword` varchar(40) NOT NULL
+  `mypassword` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -40,10 +40,7 @@ CREATE TABLE `register_user1` (
 --
 
 INSERT INTO `register_user1` (`user_id`, `myname`, `myemail`, `myusername`, `mypassword`) VALUES
-(28, 'abhinaba', 'abhinab@gmail.com', 'abhi2022', '3a824154b16ed7dab899bf000b80ee'),
-(29, '', '', '', ''),
-(30, 'shuvo', 'shuvo123@gmail.com', 'shuvo123', '81dc9bdb52d04dc20036dbd8313ed0'),
-(31, '', '', '', '');
+('root2911', 'root', 'root@root.in', 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2');
 
 -- --------------------------------------------------------
 
@@ -53,19 +50,18 @@ INSERT INTO `register_user1` (`user_id`, `myname`, `myemail`, `myusername`, `myp
 
 CREATE TABLE `risk_data` (
   `risk_id` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `risk_status` varchar(50) NOT NULL,
-  `risk_value` int(20) NOT NULL,
-  `risk_profile` varchar(100) NOT NULL,
-  `risk_other` varchar(30) NOT NULL
+  `myusername` varchar(50) NOT NULL,
+  `risk_str` varchar(50) NOT NULL,
+  `risk_status` int(20) NOT NULL,
+  `risk_profile` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `risk_data`
 --
 
-INSERT INTO `risk_data` (`risk_id`, `username`, `risk_status`, `risk_value`, `risk_profile`, `risk_other`) VALUES
-('', '', '', 0, '', '');
+INSERT INTO `risk_data` (`risk_id`, `myusername`, `risk_str`, `risk_status`, `risk_profile`) VALUES
+('root147', 'root', 'Aggressive', 5, '18 to 30 years old`I currently have no emergency funds`More than 30%`0`Strongly disagree`Future Lifestyle Improvement`More than 30% per annum`Strongly agree`potential return of more than 15% per annum`Average Returns: 24.5% Best Returns: 54% Worst Returns: -30%`');
 
 --
 -- Indexes for dumped tables
@@ -82,16 +78,6 @@ ALTER TABLE `register_user1`
 --
 ALTER TABLE `risk_data`
   ADD PRIMARY KEY (`risk_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `register_user1`
---
-ALTER TABLE `register_user1`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

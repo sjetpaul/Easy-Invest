@@ -1,35 +1,26 @@
-<?php 
-session_start();
-
-if(!isset($_SESSION['id'])){
-
-  header('location:login.php');
-
-}
-
-?>
+<?php include('page/session.php'); ?>
 <?php
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['contact_submit'])) {
 
   //  email on which you would like to recevied mail
-  $email_to = "abc@gmail.com";
+  $email_to = "wcodr01@gmail.com";
 
   //  webmail on which you upload info@domainname.com
-  $sender = "abc@gmail.com";
+  $sender = "wcodr01@gmail.com";
 
 
   $name = $_POST['name']; // required
-  $lname = $_POST['lname']; // required
+  $email = $_POST['email']; // required
   $subject = $_POST['subject']; // required
   $message = $_POST['message']; // required
-  $email = $_POST['email']; // required
+
 
 
 
   $email_message = "Below are the details of the contact form that was submitted
 from www.focus4floors.nl:\n\n";
-  $email_subject = "Contact Form - $subject";
+  $email_subject = "Contact Form - ".$subject;
 
 
   function clean_string($string)
@@ -39,11 +30,7 @@ from www.focus4floors.nl:\n\n";
   }
 
   $email_message .= "Name: " . clean_string($name) . "\n";
-  $email_message .= "Last Name: " . clean_string($lname) . "\n";
-  $email_message .= "Telephone: " . clean_string($telephone) . "\n";
   $email_message .= "Email: " . clean_string($email) . "\n";
-  $email_message .= "Product: " . clean_string($product) . "\n";
-  $email_message .= "Sort: " . clean_string($sort) . "\n";
   $email_message .= "Message: " . clean_string($message) . "\n";
 
 
@@ -54,14 +41,12 @@ from www.focus4floors.nl:\n\n";
     'X-Mailer: PHP/' . phpversion();
   $sent = mail($email_to, $email_subject, $email_message, $headers);
 
-
   if ($sent) {
     echo "<script> alert('Thank you very much we will soon get back to you')
-  location.replace('contact/')
   </script>";
+
   } else {
     echo "<script> alert('Something was wrong please try again')
-  location.replace('contact/')
   </script>";
   }
 }
@@ -91,7 +76,6 @@ from www.focus4floors.nl:\n\n";
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Pages</li>
           <li class="breadcrumb-item active">Contact</li>
         </ol>
       </nav>
@@ -100,41 +84,6 @@ from www.focus4floors.nl:\n\n";
     <section class="section contact">
 
       <div class="row gy-4">
-
-        <div class="col-xl-6">
-
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-geo-alt"></i>
-                <h3>Address</h3>
-                <p>A108 Adam Street,<br>New York, NY 535022</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-telephone"></i>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-envelope"></i>
-                <h3>Email Us</h3>
-                <p>info@example.com<br>contact@example.com</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-clock"></i>
-                <h3>Open Hours</h3>
-                <p>Monday - Friday<br>9:00AM - 05:00PM</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
 
         <div class="col-xl-6">
           <div class="card p-4">
@@ -158,11 +107,7 @@ from www.focus4floors.nl:\n\n";
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
+                 <button type="submit" name="contact_submit">Send Message</button>
                 </div>
 
               </div>

@@ -1,13 +1,4 @@
-<?php 
-session_start();
-
-if(!isset($_SESSION['id'])){
-
-  header('location:login.php');
-
-}
-
-?>
+<?php include('page/session.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
