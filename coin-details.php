@@ -35,8 +35,8 @@ $symbol = strtoupper($coin['symbol']);
 $api_key = "HGJVKQ3LVWIXR4X1";
 // https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=USD&apikey=HGJVKQ3LVWIXR4X1"
 $url = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=" . $symbol . "&market=USD&apikey=" . $api_key;
-//$chart_json = file_get_contents($url);
- $chart_json = file_get_contents('temp/data.php');
+$chart_json = file_get_contents($url);
+// $chart_json = file_get_contents('temp/data.php');
 
 $chart_data = json_decode($chart_json, true);
 
