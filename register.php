@@ -29,7 +29,7 @@ if (isset($_POST['register'])) {
         session_start();
         $_SESSION['user_id']=$user_id;
         $_SESSION['username'] = $myusername;
-        header('location:login.php');
+        header('location:risk-analyze.php');
       } else {
         echo " <script> alert('You Have an error insert value'); </script>";
       }

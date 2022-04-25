@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
       session_start();
       $_SESSION['user_id']=$val['user_id'];
       $_SESSION['username']=$val['myusername'];
-      header('location:risk-analyze.php');
+      header('location:home.php');
     } elseif ($myusername == $val['myusername'] && $mypassword !== $val['mypassword']){
       echo $msg = '<code><p>Your Password is Wrong! Try Again </p></code>';
     }else {

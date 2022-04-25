@@ -3,7 +3,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.php">
+        <a class="nav-link collapsed" href="home.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -37,13 +37,13 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="search.php">
           <i class="bi bi-search"></i>
-          <span>Search</span>
+          <span>Suggested Crypto</span>
         </a>
       </li><!-- End Search Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="crypto_list.php">
-          <i class="bi bi-google"></i>
-          <span>Crypto List</span>
+          <i class="bi bi-view-list"></i>
+          <span>All Crypto List</span>
         </a>
       </li>
 

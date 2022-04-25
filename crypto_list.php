@@ -56,7 +56,7 @@ foreach ($coin_data as $key1 => $value1) {
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
         <!--<li class="breadcrumb-item">Search</li> -->
-          <li class="breadcrumb-item active">Crypto Currency List</li>
+          <li class="breadcrumb-item "><a href="crypto_list.php" class="active">Crypto Currency List</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -68,7 +68,7 @@ foreach ($coin_data as $key1 => $value1) {
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Today's Cryptocurrency Prices by Market Cap</h5>
-              <p>The global cryptocurrency market cap today is $1.95 Trillion, a 0.2% change in the last 24 hours {Static Data}</p>
+              <p>The global cryptocurrency market cap today is $1.95 Trillion, a 0.2% change in the last 24 hours</p>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">

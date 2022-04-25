@@ -76,8 +76,7 @@ foreach ($coin_data as $key1 => $value1) {
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Search</li>
-          <li class="breadcrumb-item active">Featured</li>
+          <li class="breadcrumb-item active"><a href="search.php" class="active">Search</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -88,8 +87,8 @@ foreach ($coin_data as $key1 => $value1) {
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Featured Result</h5>
-              <p>featured Crypto Data shown based on your Risk Profile</p>
+              <h5 class="card-title">Suggested Result</h5>
+              <p>Suggested Crypto Data shown based on your Risk Profile</p>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">

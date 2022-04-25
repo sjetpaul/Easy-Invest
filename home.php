@@ -60,12 +60,10 @@ if ($res) {
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
+                      <i class="bi bi-window"></i>
                     </div>
                     <div class="ps-3">
                       <h6><?php echo $val['risk_str']; ?></h6>
-                      <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
-
                     </div>
                   </div>
                 </div>
@@ -79,16 +77,14 @@ if ($res) {
               <div class="card info-card revenue-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Suggestion</h5>
+                  <h5 class="card-title">Suggested Coin</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
+                      <i class="bi bi-search"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?php echo $val['risk_status']; ?></h6>
-                      <span class="text-muted small pt-2 ps-1">Result for You</span>
-
+                      <h6>10</h6>
                     </div>
                   </div>
                 </div>
@@ -146,7 +142,7 @@ if ($res) {
                     <h6>10. You have Rs.10 lakh to invest at the start of the year. Below are the three hypothetical investment portfolio returns scenarios with likely best and worst-case annual returns. Which scenario would you prefer?</h6>
                     <p><?php echo $riskSummary[9]; ?></p>
                   </div>
-
+                  <p class="text-center"><a href="risk-analyze.php">**update Risk Profile</a></p>
                 </div>
               </div>
             </div>

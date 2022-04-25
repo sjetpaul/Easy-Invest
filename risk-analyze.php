@@ -81,7 +81,7 @@ if (isset($_POST['risk_analyze_submit'])) {
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item">Risk Profile</li>
-          <li class="breadcrumb-item active">Risk Analyze</li>
+          <li class="breadcrumb-item active"><a href="risk-analyze.php" class="active">Risk Analyze</a></li>
         </ol>
       </nav>
     </div>

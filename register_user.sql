@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2022 at 02:10 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Apr 25, 2022 at 12:37 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,9 +40,7 @@ CREATE TABLE `register_user1` (
 --
 
 INSERT INTO `register_user1` (`user_id`, `myname`, `myemail`, `myusername`, `mypassword`) VALUES
-('abhinaba1922', 'abhinaba', 'abhinaba@gmail.com', 'abhinaba', 'b1ab1e892617f210425f658cf1d361b5489028c8771b56d845fe1c62c1fbc8b0'),
-('donvai8244', 'iamdon', 'donboy@gmail.com', 'donvai', 'b1ab1e892617f210425f658cf1d361b5489028c8771b56d845fe1c62c1fbc8b0'),
-('root1175', 'root', 'root@gmail.com', 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2');
+('root2911', 'root', 'root@root.in', 'root', 'root');
 
 -- --------------------------------------------------------
 
@@ -63,9 +61,7 @@ CREATE TABLE `risk_data` (
 --
 
 INSERT INTO `risk_data` (`risk_id`, `myusername`, `risk_str`, `risk_status`, `risk_profile`) VALUES
-('abhinaba280', 'abhinaba', 'Moderate', 3, '31 to 40 years old`4 to 6 months`21% to 30%`2 to 3`Neutral`Capital Appreciation`5%-10% per annum`Disagree`Potential return of 15% per annum`Average Returns: 19% Best Returns: 30% Worst Returns: -20%`'),
-('donvai257', 'donvai', 'Aggressive', 5, '18 to 30 years old`More than 9 months`More than 30%`0`Strongly disagree`Capital Appreciation`More than 30% per annum`Strongly agree`potential return of more than 15% per annum`Average Returns: 24.5% Best Returns: 54% Worst Returns: -30%`'),
-('root116', 'root', 'Moderately Aggressive', 4, '18 to 30 years old`I currently have no emergency funds`I currently have no income`More than 3`Strongly disagree`Future Lifestyle Improvement`More than 30% per annum`Strongly disagree`potential return of more than 15% per annum`Average Returns: 24.5% Best Returns: 54% Worst Returns: -30%`');
+('root147', 'root', 'Aggressive', 5, '18 to 30 years old`I currently have no emergency funds`More than 30%`0`Strongly disagree`Future Lifestyle Improvement`More than 30% per annum`Strongly agree`potential return of more than 15% per annum`Average Returns: 24.5% Best Returns: 54% Worst Returns: -30%`');
 
 --
 -- Indexes for dumped tables
