@@ -42,7 +42,7 @@ if (isset($_POST['edit_profile'])) {
   } else {
     echo " <script> alert('Opps!!! Something went Wrong'); </script>";
   } 
- //else{
+ //else{  remove part
    // echo " <script> alert('File Uploading Error!!'); </script>";
  // }
   
