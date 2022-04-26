@@ -1,6 +1,8 @@
 # Easy Invest
 
 Cryptocurrency Investment Suggestion Application Based on user Risk Profile.
+<--Add a new column   image_url   type= text  length= 100    for upload image--->
+<---If you get any problem then contact me GOOD NIGHT--->
 
 # LOGIN
 
