@@ -325,7 +325,7 @@ foreach ($coin_data as $key1 => $value1) {
   <?php require_once('page/footer.php'); ?>
   <!-- End Footer -->
 
-  <?php require_once('page/script.php'); ?>
+  <?php require_once('page/script_only_crypto_list.php'); ?>
 
  <!---  All responses from the API Key ! remember API Key has been modified
   {
