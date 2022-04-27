@@ -240,7 +240,7 @@ foreach ($chart_data as $key => $value) {
         <div class="row">
 
           <!-- Price Card -->
-          <div class="col-6">
+          <div class="col-lg-6">
             <div class="card info-card sales-card">
 
               <div class="card-body">
@@ -277,7 +277,7 @@ foreach ($chart_data as $key => $value) {
           </div><!-- End Sales Card -->
 
           <!-- Market Cap Card -->
-          <div class="col-6">
+          <div class="col-lg-6">
             <div class="card info-card revenue-card">
 
               <div class="card-body">

@@ -32,30 +32,16 @@ if (isset($_POST['risk_analyze_submit'])) {
       break;
   }
 
-  $sql = "SELECT * FROM $tb_risk WHERE myusername = '$username'";
-  $res = mysqli_query($con, $sql);
-  if (mysqli_num_rows($res) == 0) {
-    // Insert New Risk Profile
-    $risk_id = $username . rand(100, 999);
-    $sql2 = "INSERT INTO $tb_risk (risk_id, myusername,risk_str,risk_status,risk_profile) VALUES ('$risk_id','$username','$risk_str','$risk_status','$riskProfileStr')";
-    $result = mysqli_query($con, $sql2);
-    if($result){
-      echo "<script> alert('Your Risk Profile Successfully Saved'); </script>";   
-      header('location:index.php'); 
-    }else{
-      echo "<script> alert('Server Error!!!'); </script>";
-    }
-  } else {
-    // Update Existing Risk Profile
-    $sql2 = "UPDATE $tb_risk SET `risk_str` = '$risk_str', `risk_status` = '$risk_status', `risk_profile` = '$riskProfileStr' WHERE $tb_risk.`myusername` = '$username'";
-    $result = mysqli_query($con, $sql2);
-    if($result){
-      echo "<script> alert('Your Risk Profile Successfully Saved'); </script>";
-      header('location:index.php');
-    }else{
-      echo "<script> alert('Server Error!!!'); </script>";
-    }
-  }
+   // Update Existing Risk Profile
+   $sql2 = "UPDATE $tb_risk SET `risk_str` = '$risk_str', `risk_status` = '$risk_status', `risk_profile` = '$riskProfileStr' WHERE $tb_risk.`myusername` = '$username'";
+   $result = mysqli_query($con, $sql2);
+   if($result){
+     echo "<script> alert('Your Risk Profile Successfully Saved'); </script>";
+     header('location:home.php');
+   }else{
+     echo "<script> alert('Server Error!!!'); </script>";
+   }
+
 }
 ?>
 <!DOCTYPE html>
@@ -76,7 +62,7 @@ if (isset($_POST['risk_analyze_submit'])) {
   <!-- End Sidebar-->
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>Risk Analyze</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
