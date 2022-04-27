@@ -32,15 +32,16 @@ CREATE TABLE `register_user1` (
   `myname` text NOT NULL,
   `myemail` varchar(30) NOT NULL,
   `myusername` varchar(20) NOT NULL,
-  `mypassword` varchar(100) NOT NULL
+  `mypassword` varchar(100) NOT NULL,
+  `image_url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `register_user1`
 --
 
-INSERT INTO `register_user1` (`user_id`, `myname`, `myemail`, `myusername`, `mypassword`) VALUES
-('root2911', 'root', 'root@root.in', 'root', 'root');
+INSERT INTO `register_user1` (`user_id`, `myname`, `myemail`, `myusername`, `mypassword`,`image_url`) VALUES
+('root2911', 'root', 'root@root.in', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2','images/Screenshot.png');
 
 -- --------------------------------------------------------
 
