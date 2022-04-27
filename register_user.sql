@@ -41,7 +41,7 @@ CREATE TABLE `register_user1` (
 --
 
 INSERT INTO `register_user1` (`user_id`, `myname`, `myemail`, `myusername`, `mypassword`,`image_url`) VALUES
-('root2911', 'root', 'root@root.in', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2','images/Screenshot.png');
+('root2911', 'root', 'root@root.in', 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2','images/Screenshot.png');
 
 -- --------------------------------------------------------
 

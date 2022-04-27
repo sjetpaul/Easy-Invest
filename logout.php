@@ -1,5 +1,5 @@
 <?php include('page/session.php'); ?>
 <?php
 session_destroy();
-echo "<script> location.replace('login.php')</script>";
+echo "<script>alert('Logout Successfully'); location.replace('login.php');</script>";
 ?>

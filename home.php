@@ -52,7 +52,7 @@ if ($res) {
           <div class="row">
 
             <!-- Risk Type -->
-            <div class="col-6">
+            <div class="col-lg-6">
               <div class="card info-card sales-card">
 
                 <div class="card-body">
@@ -73,7 +73,7 @@ if ($res) {
             <!-- End Risk Type -->
 
             <!-- Suggestion Card -->
-            <div class="col-6">
+            <div class="col-lg-6">
               <div class="card info-card revenue-card">
 
                 <div class="card-body">

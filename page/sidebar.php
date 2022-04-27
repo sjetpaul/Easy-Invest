@@ -64,12 +64,12 @@
       </li><!-- End Contact Page Nav -->
 
 
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.php">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="logout.php">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Logout</span>
         </a>
-      </li> -->
+      </li>
        
       <!-- End Blank Page Nav -->
 

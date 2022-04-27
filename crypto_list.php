@@ -85,10 +85,6 @@ foreach ($coin_data as $key1 => $value1) {
                     <th scope="col">30d%</th>
                     <th scope="col">1Y%</th>
                     <th scope="col">Market Cap</th>
-                    <th scope="col">24h Volume</th>
-                    <th scope="col">Circulating Supply</th>
-                    <th scope="col">Total Supply</th>
-                 
                   </tr>
                 </thead>
                 <tbody>
@@ -187,124 +183,6 @@ foreach ($coin_data as $key1 => $value1) {
                         
                          ?></td> 
                          <!--PHP market cap function END-->
-                         <td><?php   $total_vol= $value["total_volume"];
-                           if (!function_exists('number_format_short')) {
-                           function number_format_short( $n, $precision = 2 ) {
-                            if ($n < 900) {
-                                // 0 - 900
-                                $n_format = number_format($n, $precision);
-                                $suffix = '';
-                            } else if ($n < 900000) {
-                                // 0.9k-850k
-                                $n_format = number_format($n / 1000, $precision);
-                                $suffix = 'K';
-                            } else if ($n < 900000000) {
-                                // 0.9m-850m
-                                $n_format = number_format($n / 1000000, $precision);
-                                $suffix = 'M';
-                            } else if ($n < 900000000000) {
-                                // 0.9b-850b
-                                $n_format = number_format($n / 1000000000, $precision);
-                                $suffix = 'B';
-                            } else {
-                                // 0.9t+
-                                $n_format = number_format($n / 1000000000000, $precision);
-                                $suffix = 'T';
-                            }
-                          // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
-                          // Intentionally does not affect partials, eg "1.50" -> "1.50"
-                            if ( $precision > 0 ) {
-                                $dotzero = '.' . str_repeat( '0', $precision );
-                                $n_format = str_replace( $dotzero, '', $n_format );
-                            }
-                            return $n_format . $suffix;
-                        }
-                      } 
-                              echo "$".number_format_short($total_vol);
-                        ?></td> 
-                        <td><?php 
-                              $total_supply= $value["circulating_supply"];
-                              if (!function_exists('number_format_short')) {
-                              function number_format_short( $n, $precision = 2 ) {
-                               if ($n < 900) {
-                                   // 0 - 900
-                                   $n_format = number_format($n, $precision);
-                                   $suffix = '';
-                               } else if ($n < 900000) {
-                                   // 0.9k-850k
-                                   $n_format = number_format($n / 1000, $precision);
-                                   $suffix = 'K';
-                               } else if ($n < 900000000) {
-                                   // 0.9m-850m
-                                   $n_format = number_format($n / 1000000, $precision);
-                                   $suffix = 'M';
-                               } else if ($n < 900000000000) {
-                                   // 0.9b-850b
-                                   $n_format = number_format($n / 1000000000, $precision);
-                                   $suffix = 'B';
-                               } else if ($n < 900000000000000){
-                                   // 0.9t+
-                                   $n_format = number_format($n / 1000000000000, $precision);
-                                   $suffix = 'T';
-                               } else {
-                                // 0.9t+
-                                $n_format = number_format($n / 1000000000000000, $precision);
-                                $suffix = 'Q';
-                            }
-                             // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
-                             // Intentionally does not affect partials, eg "1.50" -> "1.50"
-                               if ( $precision > 0 ) {
-                                   $dotzero = '.' . str_repeat( '0', $precision );
-                                   $n_format = str_replace( $dotzero, '', $n_format );
-                               }
-                               return $n_format . $suffix;
-                           }
-                         } 
-                                 echo "$".number_format_short($total_supply);
-                                 // echo $value["total_supply"];
-                        ?></td>
-                        <td><?php 
-                              $max_supply= $value["total_supply"];
-                              if (!function_exists('number_format_short')) {
-                              function number_format_short( $n, $precision = 2 ) {
-                               if ($n < 900) {
-                                   // 0 - 900
-                                   $n_format = number_format($n, $precision =0 );
-                                   $suffix = '';
-                               } else if ($n < 900000) {
-                                   // 0.9k-850k
-                                   $n_format = number_format($n / 1000, $precision);
-                                   $suffix = 'K';
-                               } else if ($n < 900000000) {
-                                   // 0.9m-850m
-                                   $n_format = number_format($n / 1000000, $precision);
-                                   $suffix = 'M';
-                               } else if ($n < 900000000000) {
-                                   // 0.9b-850b
-                                   $n_format = number_format($n / 1000000000, $precision);
-                                   $suffix = 'B';
-                               } else if ($n < 900000000000000){
-                                // 0.9t+
-                                $n_format = number_format($n / 1000000000000, $precision);
-                                $suffix = 'T';
-                               } else {
-                             // 0.9t+
-                                 $n_format = number_format($n / 1000000000000000, $precision);
-                                 $suffix = 'Q';
-                              }
-                             // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
-                             // Intentionally does not affect partials, eg "1.50" -> "1.50"
-                               if ( $precision > 0 ) {
-                                   $dotzero = '.' . str_repeat( '0', $precision );
-                                   $n_format = str_replace( $dotzero, '', $n_format );
-                               }
-                               return $n_format . $suffix;
-                           }
-                         } 
-                                 echo "$".number_format_short($max_supply);
-                                // echo $value["max_supply"];
-                                 ?></td> 
-
                   </tr>
                   <?php 
                   }
