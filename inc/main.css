@@ -4,3 +4,6 @@
 .dashboard .activity .activity-item .activite-label{
     max-width:60%;
 }
+.dataTable-wrapper.no-footer .dataTable-container {
+    overflow-x: scroll;
+}

@@ -87,7 +87,7 @@ foreach ($coin_data as $key1 => $value1) {
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li> -->
-          <li><a class="getstarted scrollto" href="register.php">SignUp</a></li>
+          <li><a class="getstarted scrollto" href="register.php">Register</a></li>
           <li><a class="getstarted scrollto" href="login.php">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -105,8 +105,6 @@ foreach ($coin_data as $key1 => $value1) {
           <div>
             <h1><img src="assets/img/logo.png" alt=""> Easy Invest - Next Move To Investment</h1>
             <h2></h2>
-            <a href="register.php" class="download-btn">Register</a>
-            <a href="login.php" class="download-btn">login</a>
           </div>
         </div>
         <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">

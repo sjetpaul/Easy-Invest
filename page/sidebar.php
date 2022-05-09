@@ -31,13 +31,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="risk-analyze.php">
           <i class="bx bxs-notepad"></i>
-          <span>Risk Analyze</span>
-        </a>
-      </li><!-- End Search Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="search.php">
-          <i class="bi bi-search"></i>
-          <span>Suggested Crypto</span>
+          <span>Update Risk</span>
         </a>
       </li><!-- End Search Nav -->
       <li class="nav-item">
