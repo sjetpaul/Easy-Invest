@@ -61,6 +61,7 @@ Aggressive  (5)    	>=43&& <=50
 
 # Coin Suggestion
 Application Updated with 5 groups of 10 Coin for each Risk Profile. Based on user Risk relavant coin suggested to users.For more info follow the Crypto details pdf.
+![Easy-Invest1](https://user-images.githubusercontent.com/92737056/183352977-bf65361b-d63f-4306-a5d2-ecddaa583bfd.png)
 
 # API Details
 
